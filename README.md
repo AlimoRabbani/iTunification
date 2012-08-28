@@ -1,5 +1,3 @@
-iTunification
-======================================
 License Information:
 --------------------------------------
 
@@ -26,12 +24,12 @@ Testing: Kamyar Allahverdi, Sadjad Fouladi, Mostafa Vafi
 
 Release History:
 --------------------------------------
-**Version 1.5:**
+* **Version 1.5:**
 
-    *Added Feature: Growl support.
-    *Added Feature: Cover art for Growl.
-    *Added Feature: Customizable notifications for Growl.
-    *Added Feature: Support for radio streams.
+    * Added Feature: Growl support.
+    * Added Feature: Cover art for Growl.
+    * Added Feature: Customizable notifications for Growl.
+    * Added Feature: Support for radio streams.
 
 **Version 1.4:**
 
