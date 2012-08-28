@@ -1,0 +1,416 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C907398215D9204F00D466CD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D53815D905AE000139B8 /* main.m */; };
+		C907398315D9204F00D466CD /* com_onibleAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C977D53F15D905AE000139B8 /* com_onibleAppDelegate.m */; };
+		C907398415D9204F00D466CD /* iTunesNotifications.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C977D54415D905AE000139B8 /* iTunesNotifications.xcdatamodeld */; };
+		C907398515D9204F00D466CD /* Notif.m in Sources */ = {isa = PBXBuildFile; fileRef = C934BEA915D9062600EDD858 /* Notif.m */; };
+		C907398715D9204F00D466CD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C977D52C15D905AE000139B8 /* Cocoa.framework */; };
+		C907398915D9204F00D466CD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C977D53515D905AE000139B8 /* InfoPlist.strings */; };
+		C907398A15D9204F00D466CD /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C977D53B15D905AE000139B8 /* About.rtf */; };
+		C907398B15D9204F00D466CD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C977D54115D905AE000139B8 /* MainMenu.xib */; };
+		C9AF0EDD15E038FD00C3BD15 /* Growl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9AF0EDC15E038FD00C3BD15 /* Growl.framework */; };
+		C9AF0EE015E03C1000C3BD15 /* Growl.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9AF0EDC15E038FD00C3BD15 /* Growl.framework */; };
+		C9C3965915DC190100C6FCAE /* Release.rtf in Resources */ = {isa = PBXBuildFile; fileRef = C9C3965715DC190100C6FCAE /* Release.rtf */; };
+		C9C3965B15DC192D00C6FCAE /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = C9C3965A15DC192D00C6FCAE /* icon.icns */; };
+		C9DE2CBF15ECB1C500FC093B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C9DE2CBE15ECB1C500FC093B /* README.md */; };
+		C9FD3BD515E4174500E0E3D6 /* iTunificationStartup.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9B9918E15E02FF70025337F /* iTunificationStartup.app */; };
+		C9FD3BD715E4186200E0E3D6 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FD3BD615E4186200E0E3D6 /* Sparkle.framework */; };
+		C9FD3BD815E4186C00E0E3D6 /* Sparkle.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = C9FD3BD615E4186200E0E3D6 /* Sparkle.framework */; };
+		C9FD3BDA15E418C800E0E3D6 /* dsa_pub.pem in Resources */ = {isa = PBXBuildFile; fileRef = C9FD3BD915E418C800E0E3D6 /* dsa_pub.pem */; };
+		C9FD3BE515E43BA700E0E3D6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FD3BE415E43BA700E0E3D6 /* ScriptingBridge.framework */; };
+		C9FD871115DBB4F9003CBCA9 /* icon_128x128.png in Resources */ = {isa = PBXBuildFile; fileRef = C9FD871015DBB4F9003CBCA9 /* icon_128x128.png */; };
+		C9FD871B15DBDDD8003CBCA9 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9FD871A15DBDDD8003CBCA9 /* ServiceManagement.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C9AF0EDF15E03C0700C3BD15 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C9FD3BD815E4186C00E0E3D6 /* Sparkle.framework in CopyFiles */,
+				C9AF0EE015E03C1000C3BD15 /* Growl.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9FD871415DBC8BD003CBCA9 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				C9FD3BD515E4174500E0E3D6 /* iTunificationStartup.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		C907399015D9204F00D466CD /* iTunification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunification.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C907399215D9204F00D466CD /* iTunification.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = iTunification.plist; path = /Users/Alimohammad/Developer/iTunesNotifications/iTunification.plist; sourceTree = "<absolute>"; };
+		C934BEA815D9062600EDD858 /* Notif.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notif.h; sourceTree = "<group>"; };
+		C934BEA915D9062600EDD858 /* Notif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Notif.m; sourceTree = "<group>"; };
+		C977D52C15D905AE000139B8 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		C977D52F15D905AE000139B8 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		C977D53015D905AE000139B8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C977D53115D905AE000139B8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C977D53615D905AE000139B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C977D53815D905AE000139B8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C977D53A15D905AE000139B8 /* iTunification-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iTunification-Prefix.pch"; sourceTree = "<group>"; };
+		C977D53C15D905AE000139B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/About.rtf; sourceTree = "<group>"; };
+		C977D53E15D905AE000139B8 /* com_onibleAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = com_onibleAppDelegate.h; sourceTree = "<group>"; };
+		C977D53F15D905AE000139B8 /* com_onibleAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = com_onibleAppDelegate.m; sourceTree = "<group>"; };
+		C977D54215D905AE000139B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C977D54515D905AE000139B8 /* iTunesNotifications.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = iTunesNotifications.xcdatamodel; sourceTree = "<group>"; };
+		C99D67E815DA36B1002AF632 /* iTunification.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = iTunification.entitlements; sourceTree = "<group>"; };
+		C9AF0EDC15E038FD00C3BD15 /* Growl.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Growl.framework; sourceTree = "<group>"; };
+		C9B9918E15E02FF70025337F /* iTunificationStartup.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; path = iTunificationStartup.app; sourceTree = "<group>"; };
+		C9C3965815DC190100C6FCAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Release.rtf; sourceTree = "<group>"; };
+		C9C3965A15DC192D00C6FCAE /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
+		C9DE2CBE15ECB1C500FC093B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		C9FD3BD615E4186200E0E3D6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
+		C9FD3BD915E418C800E0E3D6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
+		C9FD3BE415E43BA700E0E3D6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		C9FD3BEC15E44A8800E0E3D6 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		C9FD3BED15E44F0800E0E3D6 /* Spotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Spotify.h; sourceTree = "<group>"; };
+		C9FD871015DBB4F9003CBCA9 /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
+		C9FD871A15DBDDD8003CBCA9 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C907398615D9204F00D466CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9FD3BE515E43BA700E0E3D6 /* ScriptingBridge.framework in Frameworks */,
+				C9FD871B15DBDDD8003CBCA9 /* ServiceManagement.framework in Frameworks */,
+				C907398715D9204F00D466CD /* Cocoa.framework in Frameworks */,
+				C9AF0EDD15E038FD00C3BD15 /* Growl.framework in Frameworks */,
+				C9FD3BD715E4186200E0E3D6 /* Sparkle.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C977D51D15D905AE000139B8 = {
+			isa = PBXGroup;
+			children = (
+				C9DE2CBE15ECB1C500FC093B /* README.md */,
+				C9C3965A15DC192D00C6FCAE /* icon.icns */,
+				C99D67E815DA36B1002AF632 /* iTunification.entitlements */,
+				C977D53215D905AE000139B8 /* iTunesNotifications */,
+				C977D52B15D905AE000139B8 /* Frameworks */,
+				C907399015D9204F00D466CD /* iTunification.app */,
+			);
+			sourceTree = "<group>";
+		};
+		C977D52B15D905AE000139B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9FD3BED15E44F0800E0E3D6 /* Spotify.h */,
+				C9FD3BEC15E44A8800E0E3D6 /* iTunes.h */,
+				C9FD871A15DBDDD8003CBCA9 /* ServiceManagement.framework */,
+				C977D52C15D905AE000139B8 /* Cocoa.framework */,
+				C977D52E15D905AE000139B8 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C977D52E15D905AE000139B8 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9FD3BE415E43BA700E0E3D6 /* ScriptingBridge.framework */,
+				C9FD3BD615E4186200E0E3D6 /* Sparkle.framework */,
+				C9AF0EDC15E038FD00C3BD15 /* Growl.framework */,
+				C977D52F15D905AE000139B8 /* AppKit.framework */,
+				C977D53015D905AE000139B8 /* CoreData.framework */,
+				C977D53115D905AE000139B8 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		C977D53215D905AE000139B8 /* iTunesNotifications */ = {
+			isa = PBXGroup;
+			children = (
+				C977D53E15D905AE000139B8 /* com_onibleAppDelegate.h */,
+				C977D53F15D905AE000139B8 /* com_onibleAppDelegate.m */,
+				C9FD871015DBB4F9003CBCA9 /* icon_128x128.png */,
+				C977D54115D905AE000139B8 /* MainMenu.xib */,
+				C977D54415D905AE000139B8 /* iTunesNotifications.xcdatamodeld */,
+				C977D53315D905AE000139B8 /* Supporting Files */,
+			);
+			path = iTunesNotifications;
+			sourceTree = "<group>";
+		};
+		C977D53315D905AE000139B8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C9FD3BD915E418C800E0E3D6 /* dsa_pub.pem */,
+				C9B9918E15E02FF70025337F /* iTunificationStartup.app */,
+				C934BEA815D9062600EDD858 /* Notif.h */,
+				C934BEA915D9062600EDD858 /* Notif.m */,
+				C907399215D9204F00D466CD /* iTunification.plist */,
+				C977D53515D905AE000139B8 /* InfoPlist.strings */,
+				C977D53815D905AE000139B8 /* main.m */,
+				C977D53A15D905AE000139B8 /* iTunification-Prefix.pch */,
+				C9C3965715DC190100C6FCAE /* Release.rtf */,
+				C977D53B15D905AE000139B8 /* About.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C907398015D9204F00D466CD /* iTunification */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C907398D15D9204F00D466CD /* Build configuration list for PBXNativeTarget "iTunification" */;
+			buildPhases = (
+				C907398115D9204F00D466CD /* Sources */,
+				C907398615D9204F00D466CD /* Frameworks */,
+				C907398815D9204F00D466CD /* Resources */,
+				C9FD871415DBC8BD003CBCA9 /* CopyFiles */,
+				C9AF0EDF15E03C0700C3BD15 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iTunification;
+			productName = iTunesNotifications;
+			productReference = C907399015D9204F00D466CD /* iTunification.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C977D51F15D905AE000139B8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = com.onible;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Alimohammad Rabbani";
+			};
+			buildConfigurationList = C977D52215D905AE000139B8 /* Build configuration list for PBXProject "iTunification" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C977D51D15D905AE000139B8;
+			productRefGroup = C977D51D15D905AE000139B8;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C907398015D9204F00D466CD /* iTunification */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C907398815D9204F00D466CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C907398915D9204F00D466CD /* InfoPlist.strings in Resources */,
+				C907398A15D9204F00D466CD /* About.rtf in Resources */,
+				C907398B15D9204F00D466CD /* MainMenu.xib in Resources */,
+				C9FD871115DBB4F9003CBCA9 /* icon_128x128.png in Resources */,
+				C9C3965915DC190100C6FCAE /* Release.rtf in Resources */,
+				C9C3965B15DC192D00C6FCAE /* icon.icns in Resources */,
+				C9FD3BDA15E418C800E0E3D6 /* dsa_pub.pem in Resources */,
+				C9DE2CBF15ECB1C500FC093B /* README.md in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C907398115D9204F00D466CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C907398215D9204F00D466CD /* main.m in Sources */,
+				C907398315D9204F00D466CD /* com_onibleAppDelegate.m in Sources */,
+				C907398415D9204F00D466CD /* iTunesNotifications.xcdatamodeld in Sources */,
+				C907398515D9204F00D466CD /* Notif.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C977D53515D905AE000139B8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C977D53615D905AE000139B8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C977D53B15D905AE000139B8 /* About.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C977D53C15D905AE000139B8 /* en */,
+			);
+			name = About.rtf;
+			sourceTree = "<group>";
+		};
+		C977D54115D905AE000139B8 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C977D54215D905AE000139B8 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		C9C3965715DC190100C6FCAE /* Release.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C9C3965815DC190100C6FCAE /* en */,
+			);
+			name = Release.rtf;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C907398E15D9204F00D466CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iTunification.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTunesNotifications/iTunification-Prefix.pch";
+				INFOPLIST_FILE = iTunification.plist;
+				PRODUCT_NAME = iTunification;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C907398F15D9204F00D466CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = iTunification.entitlements;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iTunesNotifications/iTunification-Prefix.pch";
+				INFOPLIST_FILE = iTunification.plist;
+				PRODUCT_NAME = iTunification;
+				PROVISIONING_PROFILE = "";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		C977D54715D905AE000139B8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C977D54815D905AE000139B8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C907398D15D9204F00D466CD /* Build configuration list for PBXNativeTarget "iTunification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C907398E15D9204F00D466CD /* Debug */,
+				C907398F15D9204F00D466CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C977D52215D905AE000139B8 /* Build configuration list for PBXProject "iTunification" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C977D54715D905AE000139B8 /* Debug */,
+				C977D54815D905AE000139B8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C977D54415D905AE000139B8 /* iTunesNotifications.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C977D54515D905AE000139B8 /* iTunesNotifications.xcdatamodel */,
+			);
+			currentVersion = C977D54515D905AE000139B8 /* iTunesNotifications.xcdatamodel */;
+			path = iTunesNotifications.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C977D51F15D905AE000139B8 /* Project object */;
+}

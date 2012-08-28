@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'iTunesNotifications' target in the 'iTunesNotifications' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
