@@ -27,6 +27,7 @@ Testing: Kamyar Allahverdi, Sadjad Fouladi, Mostafa Vafi
 Release History:
 --------------------------------------
 **Version 1.5:**
+
     *Added Feature: Growl support.
     *Added Feature: Cover art for Growl.
     *Added Feature: Customizable notifications for Growl.
