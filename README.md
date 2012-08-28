@@ -15,11 +15,11 @@ About:
 iTunification started based on the idea behind Now Playing, a similar application with more resource usage. It then developed further with comments and feedback from other people. Visit developer website at http://onible.com/blog/2012/08/13/itunification-itunes-integration-with-notification-center-in-os-x-mountain-lion/.
 
 
-Engineering & Development: Alimohammad Rabbani
+**Engineering & Development:** Alimohammad Rabbani
 
-Graphic Design: Kamyar Allahverdi
+**Graphic Design:** Kamyar Allahverdi
 
-Testing: Kamyar Allahverdi, Sadjad Fouladi, Mostafa Vafi
+**Testing:** Kamyar Allahverdi, Sadjad Fouladi, Mostafa Vafi
 
 
 Release History:
