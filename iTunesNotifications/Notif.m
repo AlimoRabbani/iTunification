@@ -124,7 +124,7 @@
             notification.title = Name;
             notification.subtitle = Artist;
             notification.informativeText = Album;
-            notification.userInfo = [NSDictionary dictionaryWithObject:@"iTunes" forKey:@"Player"];
+            notification.userInfo = [NSDictionary dictionaryWithObject:@"Spotify" forKey:@"Player"];
             [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
             [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification:notification];
         }
