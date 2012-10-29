@@ -28,6 +28,7 @@
 
 @property NSDistributedNotificationCenter* DNC;
 @property BOOL silentMode;
+@property NSData *growlIcon;
 
 - (void) toggleNotifications;
 - (void) turnOnNotifications;
@@ -36,7 +37,7 @@
 - (void) sendiTunesGrowlNotification:(NSNotification *)note;
 - (void) spotifyNotifications:(NSNotification *)note;
 - (void) sendSpotifyGrowlNotification:(NSNotification *)note;
-- (NSData*) iTunesArtworkImage;
++ (NSData*) iTunesArtworkImage;
 - (NSData*) spotifyArtworkImage;
 
 @end

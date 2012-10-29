@@ -35,6 +35,7 @@
 
 @synthesize DNC;
 @synthesize silentMode;
+@synthesize growlIcon;
 
 - (void) toggleNotifications{
     if(silentMode == true){
@@ -72,6 +73,10 @@
 
 
 - (void) iTunesNotifications:(NSNotification *)note {
+    NSString *appName = [[[NSWorkspace sharedWorkspace] activeApplication] valueForKey:@"NSApplicationName"];
+    if([appName isEqualToString:@"iTunes"]){
+        return;
+    }
     NSDictionary *userInfo = [note userInfo];
     NSString *Name = [NSString stringWithFormat:@"%@", [userInfo valueForKey:@"Name"]];
     NSString *Artist = [userInfo valueForKey:@"Artist"];
@@ -106,6 +111,10 @@
 
 
 - (void) spotifyNotifications:(NSNotification *)note {
+    NSString *appName = [[[NSWorkspace sharedWorkspace] activeApplication] valueForKey:@"NSApplicationName"];
+    if([appName isEqualToString:@"Spotify"]){
+        return;
+    }
     NSDictionary *userInfo = [note userInfo];
     NSString *Artist = [userInfo valueForKey:@"Artist"];
     NSString *Album = [userInfo valueForKey:@"Album"];
@@ -147,6 +156,7 @@
     NSString *Genre = [userInfo valueForKey:@"Genre"];
     NSUInteger ratingInt = [[userInfo valueForKey:@"Rating"] integerValue];
     NSString *Rating = @"";
+    growlIcon = [Notif iTunesArtworkImage];
     if([userInfo objectForKey:@"Stream Title"] != nil){
         Album = [NSString stringWithFormat:@"%@", [userInfo valueForKey:@"Name"]];
         Name = [userInfo objectForKey:@"Stream Title"];
@@ -213,7 +223,8 @@
         }
         notifDescription = [notifDescription stringByAppendingString:[NSString stringWithFormat:@"%@", Genre]];
     }
-    [GrowlApplicationBridge notifyWithTitle:notifTitle description:notifDescription notificationName:(NSString *)NotifieriTunes iconData:[self iTunesArtworkImage] priority:0 isSticky:NO clickContext:@"iTunes" identifier:@"iTunes"];
+    [GrowlApplicationBridge notifyWithTitle:notifTitle description:notifDescription notificationName:(NSString *)NotifieriTunes iconData:growlIcon priority:0 isSticky:NO clickContext:@"iTunes" identifier:@"iTunes"];
+    growlIcon = nil;
 }
 
 - (void)sendSpotifyGrowlNotification:(NSNotification *)note{
@@ -295,7 +306,7 @@
     [GrowlApplicationBridge notifyWithTitle:notifTitle description:notifDescription notificationName:(NSString *)NotifieriTunes iconData:[self spotifyArtworkImage] priority:0 isSticky:NO clickContext:@"Spotify" identifier:@"Spotify"];
 }
 
-- (NSData*) iTunesArtworkImage{
++ (NSData*) iTunesArtworkImage{
     @try{
         iTunesApplication *iTunes = [SBApplication applicationWithBundleIdentifier:@"com.apple.iTunes"];
         id theTrack = [iTunes currentTrack];
