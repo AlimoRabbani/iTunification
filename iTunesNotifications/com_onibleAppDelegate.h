@@ -27,12 +27,8 @@
 @interface com_onibleAppDelegate : NSObject <NSApplicationDelegate, NSWindowDelegate>
 @property (strong) Notif *notif;
 @property (strong) NSStatusItem *theItem;
-@property (strong) NSMenuItem *showPreferencesMenu;
-@property (strong) NSMenuItem *silentModeMenu;
-@property (strong) NSMenuItem *hideMenu;
-@property (strong) NSMenuItem *hideTempMenu;
-@property (strong) NSMenuItem *aboutMenu;
-@property (strong) NSMenuItem *quitMenu;
+@property (strong) IBOutlet NSMenuItem *silentModeMenu;
+@property (strong) IBOutlet NSMenuItem *songDetailsMenu;
 
 
 @property (strong) IBOutlet NSWindow *aboutWindow;
@@ -44,6 +40,8 @@
 
 @property (strong) IBOutlet NSButtonCell *startAtLoginCheckBox;
 @property (strong) IBOutlet NSMatrix *growlNCSelectionGroup;
+@property (strong) IBOutlet NSButton *keepHistoryCheckBox;
+@property (strong) IBOutlet NSButton *showWhenActiveCheckBox;
 
 @property (strong) IBOutlet NSButton *GrowlTrackBox;
 @property (strong) IBOutlet NSButton *GrowlArtistBox;
@@ -52,17 +50,20 @@
 @property (strong) IBOutlet NSButton *GrowlYearBox;
 @property (strong) IBOutlet NSButton *GrowlGenreBox;
 
+@property (strong) IBOutlet NSMenu *theMenu;
 
 
-- (void)toggleNotifications;
-- (void)terminateApplication;
-- (void)hideStatusBarIcon;
+
+- (IBAction)terminateApplication:(id)sender;
+- (IBAction)showAboutWindow:(id)sender;
+- (IBAction)hideStatusBarIcon:(id)sender;
+- (IBAction)hideStatusBarIconTemp:(id)sender;
+- (IBAction)toggleNotifications:(id)sender;
+- (IBAction)showPreferencesWindow:(id)sender;
+- (IBAction)openPlayer:(id)sender;
 
 - (BOOL)isStartAtLogin;
 - (void)setStartAtLogin:(NSURL *)bundleURL enabled:(BOOL)enabled;
-
-- (void)showPreferencesWindow;
-- (void)showAboutWindow;
 
 - (IBAction)findSelectedButton:(id)sender;
 - (IBAction)getValue:(id)sender;
@@ -70,6 +71,6 @@
 - (IBAction)getNotificationPrefs:(id)sender;
 
 - (void) initializations;
-- (void)makeStatusBar;
+- (void) makeStatusBar;
 
 @end

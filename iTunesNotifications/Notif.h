@@ -28,7 +28,11 @@
 
 @property NSDistributedNotificationCenter* DNC;
 @property BOOL silentMode;
-@property NSData *growlIcon;
+@property (strong) NSMenuItem *songDetailsMenu;
+
+@property (strong) NSImage *lastImage;
+
+@property (strong) NSString *lastNotifPlayer;
 
 - (void) toggleNotifications;
 - (void) turnOnNotifications;
@@ -37,7 +41,14 @@
 - (void) sendiTunesGrowlNotification:(NSNotification *)note;
 - (void) spotifyNotifications:(NSNotification *)note;
 - (void) sendSpotifyGrowlNotification:(NSNotification *)note;
-+ (NSData*) iTunesArtworkImage;
-- (NSData*) spotifyArtworkImage;
+- (void) updateStatusBarWithSong:(NSString *)songTitle Artist:(NSString *)artist Album:(NSString *)album Time:(NSString *)totalTime;
+- (void) iTunesArtworkImage;
+- (void) spotifyArtworkImage;
+- (NSData*) iTunesArtworkImageData;
+- (NSData*) spotifyArtworkImageData;
+- (NSString *)appropriateStringWithString:(NSString *)string WithFont:(NSFont *)font WithSize:(NSUInteger)width;
+
+- (void) updateInitialStatus;
+- (void) cleanStatus;
 
 @end

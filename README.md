@@ -12,18 +12,24 @@ You should have received a copy of the GNU General Public License along with iTu
 
 About:
 --------------------------------------
-iTunification started based on the idea behind Now Playing, a similar application with more resource usage. It then developed further with comments and feedback from other people. Visit developer website at http://onible.com/blog/2012/08/13/itunification-itunes-integration-with-notification-center-in-os-x-mountain-lion/.
+iTunification started based on the idea behind Now Playing, a similar application with more resource usage. It then developed further with comments and feedback from other people. Visit developer website at http://onible.com/iTunification/.
 
 
 **Engineering & Development:** Alimohammad Rabbani
 
 **Graphic Design:** Kamyar Allahverdi
 
-**Testing:** Kamyar Allahverdi, Sadjad Fouladi, Mostafa Vafi
-
 
 Release History:
 --------------------------------------
+* **Version 1.6:**
+    * Added Feature: Song details are shown in status bar
+	* Added Feature: Added option to keep a history of notifications in Notification Center.
+	* Added Feature: Added option not to show notifications when music player is active.
+    * Bug Fixed: A bug is fixed where cover arts did not load for some songs.
+	* Bug Fixed: Memory leakage with Growl notifications is solved.
+	* Bug Fixed: A bug is fixed where selecting notifications opened iTunes instead of Spotify.
+
 * **Version 1.5:**
     * Added Feature: Growl support.
     * Added Feature: Cover art for Growl.

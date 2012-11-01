@@ -27,7 +27,7 @@
 
 @implementation com_onibleAppDelegate
 
-@synthesize startAtLoginCheckBox;
+@synthesize startAtLoginCheckBox, keepHistoryCheckBox, showWhenActiveCheckBox;
 @synthesize growlNCSelectionGroup;
 @synthesize GrowlTrackBox;
 @synthesize GrowlArtistBox;
@@ -38,7 +38,7 @@
 
 @synthesize notif;
 @synthesize theItem;
-@synthesize silentModeMenu, quitMenu, hideMenu, aboutMenu, hideTempMenu, showPreferencesMenu;
+@synthesize silentModeMenu, songDetailsMenu;
 @synthesize aboutWindow;
 @synthesize preferencesWindow;
 
@@ -172,6 +172,7 @@
 - (NSApplicationTerminateReply)applicationShouldTerminate:(NSApplication *)sender
 {
     // Save changes in the application's managed object context before the application terminates.
+    [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
     
     if (!_managedObjectContext) {
         return NSTerminateNow;
@@ -221,6 +222,15 @@
     if(center == nil){
         [[NSUserDefaults standardUserDefaults] setObject:@"NC" forKey:@"Center"];
     }
+    
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"ShowWhenPlayerActive"] == nil){
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShowWhenPlayerActive"];
+    }
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"KeepHistoryOfNotifications"] == nil){
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"KeepHistoryOfNotifications"];
+    }
+
+    
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"GrowlTrack"] == nil){
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GrowlTrack"];
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"GrowlArtist"];
@@ -231,45 +241,47 @@
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
     notif = [[Notif alloc] init];
+    notif.songDetailsMenu = songDetailsMenu;
+    notif.lastNotifPlayer = @"iTunes";
     [notif turnOnNotifications];
     BOOL hiddenStatusBar = [[NSUserDefaults standardUserDefaults] boolForKey:@"HiddenStatusBar"];
     if(hiddenStatusBar != true){
         [self makeStatusBar];
     }
-    
+    [notif updateInitialStatus];
 }
 
 - (void)makeStatusBar{
     NSStatusBar *bar = [NSStatusBar systemStatusBar];
-    
     theItem = [bar statusItemWithLength:NSVariableStatusItemLength];
     NSImage *barIcon = [NSImage imageNamed:@"icon"];
     [barIcon setSize:NSSizeFromString(@"17x17")];
     [theItem setImage:barIcon];
-    
     [theItem setHighlightMode:YES];
-    NSMenu *theMenu = [[NSMenu alloc] initWithTitle:@"None"];
-    self.showPreferencesMenu = [[NSMenuItem alloc] initWithTitle:@"Preferences" action:@selector(showPreferencesWindow) keyEquivalent:@""];
-    self.silentModeMenu = [[NSMenuItem alloc] initWithTitle:@"Silent Mode" action:@selector(toggleNotifications) keyEquivalent:@""];
-    [self.silentModeMenu setState:NSOffState];
-    self.hideMenu = [[NSMenuItem alloc] initWithTitle:@"Hide Status Bar Icon Forever" action:@selector(hideStatusBarIcon) keyEquivalent:@""];
-    self.hideTempMenu = [[NSMenuItem alloc] initWithTitle:@"Hide Status Bar Icon" action:@selector(hideStatusBarIconTemp) keyEquivalent:@""];
-    self.aboutMenu = [[NSMenuItem alloc] initWithTitle:@"About iTunification" action:@selector(showAboutWindow) keyEquivalent:@""];
-    self.quitMenu = [[NSMenuItem alloc] initWithTitle:@"Quit" action:@selector(terminateApplication) keyEquivalent:@""];
-    
-    [theMenu addItem:self.showPreferencesMenu];
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    [theMenu addItem:self.silentModeMenu];
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    [theMenu addItem:self.hideTempMenu];
-    [theMenu addItem:self.hideMenu];
-    [theMenu addItem:[NSMenuItem separatorItem]];
-    [theMenu addItem:self.aboutMenu];
-    [theMenu addItem:self.quitMenu];
-    [theItem setMenu:theMenu];
+    [theItem setMenu:self.theMenu];
 }
 
-- (void)toggleNotifications{
+- (IBAction)terminateApplication:(id)sender {
+    [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
+    [NSApp terminate:self];
+}
+
+- (IBAction)showAboutWindow:(id)sender {
+    [self.aboutWindow makeKeyAndOrderFront:nil];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
+}
+
+- (IBAction)hideStatusBarIcon:(id)sender {
+    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"HiddenStatusBar"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSStatusBar systemStatusBar] removeStatusItem:theItem];
+}
+
+- (IBAction)hideStatusBarIconTemp:(id)sender {
+    [[NSStatusBar systemStatusBar] removeStatusItem:theItem];
+}
+
+- (IBAction)toggleNotifications:(id)sender {
     [notif toggleNotifications];
     if(notif.silentMode == true){
         [self.silentModeMenu setState:NSOnState];
@@ -279,19 +291,79 @@
     }
 }
 
-- (void)terminateApplication{
-    [[NSUserNotificationCenter defaultUserNotificationCenter] removeAllDeliveredNotifications];
-    [NSApp terminate:self];
+- (IBAction)showPreferencesWindow:(id)sender {
+    NSString *center = [[NSUserDefaults standardUserDefaults] objectForKey:@"Center"];
+    if([center isEqualToString:@"NC"])
+        [growlNCSelectionGroup setState:NSOnState atRow:0 column:0];
+    else
+        [growlNCSelectionGroup setState:NSOnState atRow:1 column:0];
+    
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"ShowWhenPlayerActive"])
+        [self.showWhenActiveCheckBox setState:NSOnState];
+    else
+        [self.showWhenActiveCheckBox setState:NSOffState];
+
+    if([[NSUserDefaults standardUserDefaults] boolForKey:@"KeepHistoryOfNotifications"])
+        [self.keepHistoryCheckBox setState:NSOnState];
+    else
+        [self.keepHistoryCheckBox setState:NSOffState];
+
+    
+    bool GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlTrack"];
+    if(GrowlPref == YES)
+        [GrowlTrackBox setState:NSOnState];
+    else
+        [GrowlTrackBox setState:NSOffState];
+    
+    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlArtist"];
+    if(GrowlPref == YES)
+        [GrowlArtistBox setState:NSOnState];
+    else
+        [GrowlArtistBox setState:NSOffState];
+    
+    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlAlbum"];
+    if(GrowlPref == YES)
+        [GrowlAlbumBox setState:NSOnState];
+    else
+        [GrowlAlbumBox setState:NSOffState];
+    
+    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlRating"];
+    if(GrowlPref == YES)
+        [GrowlRatingBox setState:NSOnState];
+    else
+        [GrowlRatingBox setState:NSOffState];
+    
+    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlYear"];
+    if(GrowlPref == YES)
+        [GrowlYearBox setState:NSOnState];
+    else
+        [GrowlYearBox setState:NSOffState];
+    
+    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlGenre"];
+    if(GrowlPref == YES)
+        [GrowlGenreBox setState:NSOnState];
+    else
+        [GrowlGenreBox setState:NSOffState];
+    
+    if([self isStartAtLogin]){
+        [self.startAtLoginCheckBox setState:NSOnState];
+    }
+    else{
+        [self.startAtLoginCheckBox setState:NSOffState];
+    }
+    
+    [self.preferencesWindow makeKeyAndOrderFront:nil];
+    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 }
 
-- (void)hideStatusBarIcon{
-    [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"HiddenStatusBar"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSStatusBar systemStatusBar] removeStatusItem:theItem];
-}
+- (IBAction)openPlayer:(id)sender {
+    if([notif.lastNotifPlayer isEqualToString:@"iTunes"]){
+        [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.apple.iTunes"]  options:NSWorkspaceLaunchDefault configuration:nil error:nil];
+    }
+    else if([notif.lastNotifPlayer isEqualToString:@"Spotify"]){
+        [[NSWorkspace sharedWorkspace] launchApplicationAtURL:[[NSWorkspace sharedWorkspace] URLForApplicationWithBundleIdentifier:@"com.spotify.client"]  options:NSWorkspaceLaunchDefault configuration:nil error:nil];
+    }
 
-- (void)hideStatusBarIconTemp{
-    [[NSStatusBar systemStatusBar] removeStatusItem:theItem];
 }
 
 - (BOOL)isStartAtLogin {
@@ -317,10 +389,24 @@
 
 - (IBAction)getValue:(id)sender{
     NSButton *button = sender;
-    if ([button state] == NSOnState)
-        [self setStartAtLogin:[[NSBundle mainBundle] bundleURL] enabled:YES];
-    else
-        [self setStartAtLogin:[[NSBundle mainBundle] bundleURL] enabled:NO];
+    if([[sender identifier] isEqualToString:@"Startup"]){
+        if ([button state] == NSOnState)
+            [self setStartAtLogin:[[NSBundle mainBundle] bundleURL] enabled:YES];
+        else
+            [self setStartAtLogin:[[NSBundle mainBundle] bundleURL] enabled:NO];
+    }
+    else if([[sender identifier] isEqualToString:@"KeepHistory"]){
+        if([button state] == NSOnState)
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"KeepHistoryOfNotifications"];
+        else
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"KeepHistoryOfNotifications"];
+    }
+    else if([[sender identifier] isEqualToString:@"ShowWhenActive"]){
+        if([button state] == NSOnState)
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ShowWhenPlayerActive"];
+        else
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"ShowWhenPlayerActive"];
+    }
 }
 
 
@@ -335,71 +421,9 @@
 	}
     
 	// Setting login
-	if (!SMLoginItemSetEnabled((CFStringRef)@"com.onible.iTunificationStartup",
-                               enabled)) {
+	if (!SMLoginItemSetEnabled((CFStringRef)@"com.onible.iTunificationStartup", enabled)) {
 		NSLog(@"SMLoginItemSetEnabled failed!");
 	}
-}
-
-
-- (void)showPreferencesWindow{
-    NSString *center = [[NSUserDefaults standardUserDefaults] objectForKey:@"Center"];
-    if([center isEqualToString:@"NC"])
-        [growlNCSelectionGroup setState:NSOnState atRow:0 column:0];
-    else
-        [growlNCSelectionGroup setState:NSOnState atRow:1 column:0];
-    
-    bool GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlTrack"];
-    if(GrowlPref == YES)
-        [GrowlTrackBox setState:NSOnState];
-    else
-        [GrowlTrackBox setState:NSOffState];
-
-    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlArtist"];
-    if(GrowlPref == YES)
-        [GrowlArtistBox setState:NSOnState];
-    else
-        [GrowlArtistBox setState:NSOffState];
-
-    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlAlbum"];
-    if(GrowlPref == YES)
-        [GrowlAlbumBox setState:NSOnState];
-    else
-        [GrowlAlbumBox setState:NSOffState];
-
-    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlRating"];
-    if(GrowlPref == YES)
-        [GrowlRatingBox setState:NSOnState];
-    else
-        [GrowlRatingBox setState:NSOffState];
-
-    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlYear"];
-    if(GrowlPref == YES)
-        [GrowlYearBox setState:NSOnState];
-    else
-        [GrowlYearBox setState:NSOffState];
-
-    GrowlPref = [[NSUserDefaults standardUserDefaults] boolForKey:@"GrowlGenre"];
-    if(GrowlPref == YES)
-        [GrowlGenreBox setState:NSOnState];
-    else
-        [GrowlGenreBox setState:NSOffState];
-
-    if([self isStartAtLogin]){
-        [self.startAtLoginCheckBox setState:NSOnState];
-    }
-    else{
-        [self.startAtLoginCheckBox setState:NSOffState];
-    }
-    
-    [self.preferencesWindow makeKeyAndOrderFront:nil];
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
-}
-
-
-- (void)showAboutWindow{
-    [self.aboutWindow makeKeyAndOrderFront:nil];
-    [[NSApplication sharedApplication] activateIgnoringOtherApps:YES];
 }
 
 - (IBAction)findSelectedButton:(id)sender {

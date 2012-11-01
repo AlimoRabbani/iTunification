@@ -76,6 +76,7 @@
 		C9C3965815DC190100C6FCAE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Release.rtf; sourceTree = "<group>"; };
 		C9C3965A15DC192D00C6FCAE /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		C9DE2CBE15ECB1C500FC093B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		C9FBDE7A163FC29C00974B05 /* icon_128x128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_128x128.png; sourceTree = "<group>"; };
 		C9FD3BD615E4186200E0E3D6 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		C9FD3BD915E418C800E0E3D6 /* dsa_pub.pem */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = dsa_pub.pem; sourceTree = "<group>"; };
 		C9FD3BE415E43BA700E0E3D6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
@@ -104,6 +105,7 @@
 		C977D51D15D905AE000139B8 = {
 			isa = PBXGroup;
 			children = (
+				C9FBDE7A163FC29C00974B05 /* icon_128x128.png */,
 				C9DE2CBE15ECB1C500FC093B /* README.md */,
 				C9C3965A15DC192D00C6FCAE /* icon.icns */,
 				C99D67E815DA36B1002AF632 /* iTunification.entitlements */,
@@ -289,7 +291,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = iTunification.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -298,6 +300,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunesNotifications/iTunification-Prefix.pch";
 				INFOPLIST_FILE = iTunification.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = iTunification;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -308,7 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = iTunification.entitlements;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -317,6 +320,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iTunesNotifications/iTunification-Prefix.pch";
 				INFOPLIST_FILE = iTunification.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PRODUCT_NAME = iTunification;
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -331,7 +335,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -349,7 +353,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Debug;
 		};
@@ -361,7 +365,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "Developer ID Application: Ali Mohammad Rabbani";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -372,7 +376,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				PROVISIONING_PROFILE = "";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.8;
 			};
 			name = Release;
 		};
