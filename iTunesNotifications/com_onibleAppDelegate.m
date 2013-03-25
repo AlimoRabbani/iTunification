@@ -53,6 +53,16 @@
     [self initializations];
 }
 
+// Always show the menu item when the app is open manually to allow it to become visible again after it's been hidden by the user.
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+    [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"HiddenStatusBar"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    [[NSStatusBar systemStatusBar] removeStatusItem:theItem];
+    [self makeStatusBar];
+    
+    return YES;
+}
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "com.onible.iTunesNotifications" in the user's Application Support directory.
 - (NSURL *)applicationFilesDirectory
